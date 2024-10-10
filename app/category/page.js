@@ -13,7 +13,7 @@ export default function Home() {
   const { register, handleSubmit, reset } = useForm();
 
   async function fetchCategory() {
-    const data = await fetch(`api/category`);
+    const data = await fetch(`/api/category`);
     const c = await data.json();
     const c2 = c.map((category) => {
       category.id = category._id;
@@ -45,7 +45,7 @@ export default function Home() {
   function createOrUpdateCategory(data) {
     if (editMode) {
       // Update category
-      fetch(`api/category`, {
+      fetch(`/api/category`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -58,7 +58,7 @@ export default function Home() {
       return;
     }
 
-    fetch(`api/category`, {
+    fetch(`/api/category`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
